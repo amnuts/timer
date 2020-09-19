@@ -1,0 +1,36 @@
+{
+    "name": "amnuts/timer",
+    "description": "A simple to use timer class",
+    "keywords": ["opcache", "cache", "gui", "opcodes", "interface"],
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Andrew Collington",
+            "email": "andy@amnuts.com",
+            "homepage": "http://www.amnuts.com/",
+            "role": "Developer"
+        },
+        {
+            "name": "Contributors",
+            "homepage": "https://github.com/amnuts/opcache-gui/graphs/contributors"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "Amnuts\\" : "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Amnuts\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3"
+    }
+}
