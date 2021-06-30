@@ -14,7 +14,7 @@ class TimerTest extends TestCase
     /**
      * @testdox Test that instantiating the class is OK
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         $timer = new Timer();
         $this->assertInstanceOf(Timer::class, $timer);
@@ -23,7 +23,7 @@ class TimerTest extends TestCase
     /**
      * @testdox Check that the `stop` method returns object
      */
-    public function testStopWorks()
+    public function testStopWorks(): void
     {
         $timer = (new Timer())->stop();
         $this->assertInstanceOf(Timer::class, $timer);
@@ -32,7 +32,7 @@ class TimerTest extends TestCase
     /**
      * @testdox Check that the `stop` method throws exception on failure
      */
-    public function testStopThrowsException()
+    public function testStopThrowsException(): void
     {
         $timer = new Timer();
 
@@ -49,7 +49,7 @@ class TimerTest extends TestCase
     /**
      * @testdox Check that the `mark` method returns object
      */
-    public function testMarkWorks()
+    public function testMarkWorks(): void
     {
         $timer = (new Timer())->mark();
         $this->assertInstanceOf(Timer::class, $timer);
@@ -58,7 +58,7 @@ class TimerTest extends TestCase
     /**
      * @testdox Check that the `mark` method throws exception on failure
      */
-    public function testMarkThrowsException()
+    public function testMarkThrowsException(): void
     {
         $timer = new Timer();
 
@@ -75,7 +75,7 @@ class TimerTest extends TestCase
     /**
      * @testdox Test that __toString shows right thing while running
      */
-    public function testToStringWhileRunning()
+    public function testToStringWhileRunning(): void
     {
         $timer = new Timer();
         $this->assertMatchesRegularExpression(
@@ -94,7 +94,7 @@ class TimerTest extends TestCase
     /**
      * @testdox Test that __toString shows right thing when stopped
      */
-    public function testToStringStopped()
+    public function testToStringStopped(): void
     {
         $timer = (new Timer())->stop();
         $this->assertMatchesRegularExpression(
@@ -106,7 +106,7 @@ class TimerTest extends TestCase
     /**
      * @testdox Test that __toString shows right thing when using markers
      */
-    public function testToStringMarker()
+    public function testToStringMarker(): void
     {
         // without marker text
         $timer = (new Timer())->mark()->stop();

@@ -5,13 +5,9 @@ namespace Amnuts\Datetime;
 use DateTimeInterface;
 use Exception;
 use RuntimeException;
-use function date_create_from_format;
 use function date_create_immutable_from_format;
-use function date_format;
 use function microtime;
 use function count;
-use function floor;
-use function fmod;
 use function sprintf;
 
 /**
@@ -145,26 +141,25 @@ class Timer
                     $this->getFormatted($this->times[0]->time),
                     $this->getDiff($current->time, $this->times[0]->time)
                 );
-            } else {
-                $output = '';
-                $total = count($this->times);
-                for ($i = 0; $i < $total; $i++) {
-                    if (!$i) {
-                        $output .= sprintf("Started %s\n", $this->getFormatted($this->times[$i]->time));
-                    } else if ($i == ($total - 1)) {
-                        $output .= sprintf("Ended %s, total time %s\n",
-                            $this->getFormatted($this->times[$i]->time),
-                            $this->getDiff($this->times[0]->time, $this->times[$i]->time)
-                        );
-                    } else {
-                        $output .= sprintf("\tΔ %s%s\n",
-                            $this->getDiff($this->times[$i - 1]->time, $this->times[$i]->time),
-                            $this->times[$i]->message ? " ({$this->times[$i]->message})" : ''
-                        );
-                    }
-                }
-                return $output;
             }
+            $output = '';
+            $total = count($this->times);
+            foreach ($this->times as $i => $timeValue) {
+                if (!$i) {
+                    $output .= sprintf("Started %s\n", $this->getFormatted($timeValue->time));
+                } elseif ($i === ($total - 1)) {
+                    $output .= sprintf("Ended %s, total time %s\n",
+                        $this->getFormatted($timeValue->time),
+                        $this->getDiff($this->times[0]->time, $timeValue->time)
+                    );
+                } else {
+                    $output .= sprintf("\tΔ %s%s\n",
+                        $this->getDiff($this->times[$i - 1]->time, $timeValue->time),
+                        $timeValue->message ? " ({$timeValue->message})" : ''
+                    );
+                }
+            }
+            return $output;
         } catch (Exception $e) {
             return 'Cannot determine timer: ' . $e->getMessage();
         }
