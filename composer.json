@@ -1,7 +1,7 @@
 {
     "name": "amnuts/timer",
     "description": "A simple to use timer class",
-    "keywords": ["opcache", "cache", "gui", "opcodes", "interface"],
+    "keywords": ["timer"],
     "type": "library",
     "license": "MIT",
     "minimum-stability": "stable",
@@ -14,7 +14,7 @@
         },
         {
             "name": "Contributors",
-            "homepage": "https://github.com/amnuts/opcache-gui/graphs/contributors"
+            "homepage": "https://github.com/amnuts/timer/graphs/contributors"
         }
     ],
     "autoload": {
